@@ -1,5 +1,33 @@
 # My awesome DevSecOps Application
 
+## 🛡️ Python Security Scan Setup (with Bandit, Safety, Checkov)
+
+Follow the steps below to set up a secure Python environment and scan your code and dependencies:
+
+# Bandit 
+
+```bash
+# Step 1: Create a virtual environment named 'venv' and activate it
+python3 -m venv venv && source venv/bin/activate
+```
+
+```bash
+# Step 2: Install Bandit for static code analysis
+pip install bandit
+```
+
+```bash
+# Step 3: Scan your codebase (e.g., vulnerable_app.py) with Bandit
+bandit -r vulnerable_app.py
+```
+
+# Safety
+
+```bash
+# Step 1: Use Safety (via Docker) to check your dependencies in requirements.txt for known vulnerabilities
+docker run --rm -v "$(pwd)"/requirements.txt:/tmp/requirements.txt ghcr.io/pyupio/safety:latest safety check -r /tmp/requirements.txt
+```
+
 
 ![Image 1: Bandit vulnerabilities scan](https://github.com/user-attachments/assets/b00f7b6a-6aa4-4c2e-bac0-244754479d82)
 
