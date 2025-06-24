@@ -1,0 +1,12 @@
+# Python virtual environment
+venv/
+
+# Generated report files
+*.json
+*.log
+
+# Common Python build artifacts
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
