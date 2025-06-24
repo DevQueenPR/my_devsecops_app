@@ -40,6 +40,18 @@ pip install checkov
 checkov -f bad_s3_bucket.tf
 ```
 
+# Gitleaks
+
+```bash
+# Step 1: With the files already commited to git, use Gitleaks via docker to scan for exposed credentials and store it in a file called 'gitleaks_report.json'.
+docker run --rm -v "$(pwd)":/app zricethezav/gitleaks detect --source=/app --report-path /app/gitleaks_report.json
+```
+
+```bash
+# Step 2: Open the report where details of the leak are stored.
+cat gitleaks_report.json
+```
+
 
 ![Image 1: Bandit vulnerabilities scan](https://github.com/user-attachments/assets/b00f7b6a-6aa4-4c2e-bac0-244754479d82)
 
@@ -58,4 +70,8 @@ checkov -f bad_s3_bucket.tf
 ![image 8: Checkov vulnerability scan](https://github.com/user-attachments/assets/d49e133a-d2d1-458c-8149-8057261e3edd)
 
 ![image 9: Checkov vulnerability scan](https://github.com/user-attachments/assets/427604b5-0f5d-43b8-9018-e185cf4d962d)
+
+![image 10: Gitleaks vulnerability scan](https://github.com/user-attachments/assets/d20d742b-4c97-4905-a680-25ad5f3c0120)
+
+![image 11: Gitleaks vulnerability report](https://github.com/user-attachments/assets/3c4387d5-f1dd-4c0f-a55a-2050c3f61664)
 
