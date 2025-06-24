@@ -52,6 +52,15 @@ docker run --rm -v "$(pwd)":/app zricethezav/gitleaks detect --source=/app --rep
 cat gitleaks_report.json
 ```
 
+# Trivy 
+```bash
+# Step 1: Build docker image 
+docker build -t my-devsecops-app:latest .
+```
+```bash
+#Step 2: Run Trivy via Docker image
+docker run --rm -v /var/run/docker.sock:/var/run/docker.sock aquasec/trivy:latest image my-devsecops-app:latest
+``` 
 
 ![Image 1: Bandit vulnerabilities scan](https://github.com/user-attachments/assets/b00f7b6a-6aa4-4c2e-bac0-244754479d82)
 
@@ -74,4 +83,8 @@ cat gitleaks_report.json
 ![image 10: Gitleaks vulnerability scan](https://github.com/user-attachments/assets/d20d742b-4c97-4905-a680-25ad5f3c0120)
 
 ![image 11: Gitleaks vulnerability report](https://github.com/user-attachments/assets/3c4387d5-f1dd-4c0f-a55a-2050c3f61664)
+
+![image 12: Trivy vulnerability report](https://github.com/user-attachments/assets/0ec779be-39f1-4556-a065-753dd2da21f4)
+
+![image 13: Trivy vulnerability report](https://github.com/user-attachments/assets/f2cbce2b-cf08-4905-8a0a-45b1e227caa5)
 
