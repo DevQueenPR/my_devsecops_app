@@ -6,21 +6,41 @@
 - **Purpose**: Analyzes Python source code to find common security issues such as hardcoded passwords or insecure function calls.
 - **Category**: Static Application Security Testing (SAST)
 
+- **CI/CD Stage**: 
+  - Pre-commit (via hooks)
+  - CI Build Stage (post-commit, PR scanning)
+
 ### 🧪 Safety (SCA)
 - **Purpose**: Checks Python dependencies for known vulnerabilities using a public CVE database.
 - **Category**: Software Composition Analysis (SCA)
+
+- **CI/CD Stage**:
+  - After dependency install (`pip install`)
+  - CI Build or Test Stage
 
 ### 🧱 Checkov (SAST for IaC)
 - **Purpose**: Scans Infrastructure-as-Code (e.g., Terraform, CloudFormation) to detect insecure configurations (e.g., open S3 buckets, unencrypted resources).
 - **Category**: Static Analysis for Infrastructure-as-Code (SAST-IaC)
 
+- **CI/CD Stage**:
+  - Pre-deployment
+  - CI Test Stage for IaC validation
+
 ### 🔑 Gitleaks (Secrets Scanning)
 - **Purpose**: Detects hardcoded secrets like API keys, tokens, or credentials that may have been committed to version control.
 - **Category**: Secrets Detection / Static Security Scanning
+  
+- **CI/CD Stage**:
+  - Pre-commit (hooks to stop secrets at the source)
+  - CI Test Stage (scans commit history or diffs)
 
 ### 🐳 Trivy (Container & SCA Scanning)
 - **Purpose**: Scans Docker images for vulnerabilities in OS packages, libraries, and dependencies. It also performs configuration checks.
 - **Category**: Container Security / Software Composition Analysis (SCA)
+
+- **CI/CD Stage**:
+  - Post-build (after Docker image creation)
+  - Pre-deploy (before pushing to registry or shipping to production)
 
 > 💡 **SAST** tools analyze source code or configuration without executing it.  
 > **SCA** tools inspect third-party packages and dependencies for known vulnerabilities.  
